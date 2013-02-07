@@ -1,0 +1,73 @@
+\documentclass[twocolumn]{article}
+\usepackage{graphicx}
+\usepackage{enumerate}
+\usepackage{url}
+\usepackage{hyperref}
+
+\input{./title.tex}
+
+\begin{abstract}
+\end{abstract}
+\section{Introduction}
+Wireless Sensor Networks have a wide range of applications in both the static(from area monitoring to agriculture-based) and dynamic(from military based applications to animal tracking) scenarios. The primary difference between a WSN and a normal wired network is the resource constraints in WSNs. The constraints here are in terms of Power consumption, Computational resources, Memory usage, etc. The sensor nodes in network are very short on their power resource and henceforth their lifetime decreases if they are always sending data. Most of the information in sensor nets is not needed until something ill has happened, in the sense WSNs are event-driven. For example, in a plant health monitoring system, the data sensed by the sensor node(which is normal most of the time) is not needed till the level of plant health has gone below a threshold level(which is a rare event). This problem can be handled by providing the nodes with some computation power and the nodes send their data only when an anomaly has occurred. Presently, such WSNs have been deployed at huge levels but all of them are domain specific. Development of a WSN framework is usually application dependent. Also if the program running on a particular node has to be changed, it has to be changed manually.
+For a real simulation, we need to have a prototype network of WSNs to test the design of our framework.
+
+\section{Problem statement}
+We would like to design a general framework which facilitates and automates a lot of the manual work done in the deployment and maintenance of WSNs. We want to have a framework such that it is general enough to be used for a lot of applications of WSNs. It should also be programmable so that the job the WSN performs can be changed anytime. Moreover, it should be remotely programmable, so that it can be programmed from a central location. It would also be nice to have the programming paradigm as easy and simple as possible for the programmer.
+Currently most of these problems are handled manually and in an ad-hoc manner. A construction of such a general framework would be analogous to the systematization of databases which happened in the 1960s and 70s, when 
+
+
+\section{Proposal}
+The proposed architecture is something like this:
+\begin{enumerate}
+\item The whole system is a hierarchical control system(\ref{http://en.wikipedia.org/wiki/Hierarchical_control_system})
+\item The system doesn’t assume that nodes and sensors have unique ids(IP addresses, MAC addresses etc.)
+\item Every node and sensor has a set of properties, which are used to diffuse tasks/queries through the network. Therefore, all multicast is property-based.
+\item The tasks/queries are written in an SQL-like language
+\end{enumerate}
+
+\section{Programming Paradigm}
+
+In most of the cases the sensor networks are deployed and then any change in the working of sensors need reprogramming in them. There is a need of ‘on-the-fly’ programming of sensor nodes in the sensor networks. Manual reprogramming of a network with thousands of nodes is infeasible. A lot of work has been done in the field of programming of these sensors implementing various wireless routing algorithms that would be useful in such a resource constraint scenario.
+
+There are loads of issues in designing a Programming framework for WSNs. Some of them are:
+\begin{enumerate}[a)]
+\item Program Length: The packets needed to send a large program code would be high and the network congestion increases if large number of packets are send. Also, the power constraints make such communication difficult for the multi-hop sensors. The compute power and memory is also another constraint which will come into place if the Program Code is very big.
+
+\item Binary Program: Sending binary program also makes the above issues worse. As said before, the computer power of sensor nodes is very less. Having a compiler at each of the nodes individually is not feasible in a large sensor network and therefore we need to send the large binary code.
+
+\item Version Control: The dynamic reprogramming have this issue of different versions for programs at various nodes. This version control can be done at the administrator or at the nodes itself.The design of the framework should be such that the whole network should be scalable and reliable keeping in mind the constraints.
+
+\item Programming Interface: The interface for the administrators is also an important issue. It should be easier for a non-programmer to send queries for particular nodes in the network.
+
+\item Initiation: There are basically two schemes proposed in the literature of programming these sensors[1]:-
+1. Code Dissemination- Initiated by the network administrator where code is send to the individual sensors or group of sensors. This could be for various purposes like fixing bugs, changing network structure, changing programs, etc.
+2. Code Acquisition- This is initiated by sensor nodes themselves as per need or per changing surrounding.
+The choice depends on what gives you the best performance in overall ways.
+\end{enumerate}
+
+\section{Networking}
+
+Wireless Routing has been a great subject of study for the past many years. Issues like reliability, security, quick transmission, etc. are the need for the wireless communication protocols. In the case of WSNs, the requirements for these protocols increase more than mere Wireless networking. Some of the issues faced in routing the packets and networking in WSNs are:
+\begin{itemize}
+\item Hops: To make a general framework the network should be able to handle both the single-hop and multihop transmissions. For remote sensor networks applications, multi hop reprogramming is a need. There are power constraints in nodes that are used frequently to transmit the programs from administrator to far flung nodes in multi hop nets.
+
+\item Scheduling: Scheduling issues is also a great concern for reliable and quick transmission. To handle the Hidden Terminal problem we can’t use the conventional solution due to the resource constraints. Avoiding as many collisions as possible is basically the need.
+
+\item Pipelining: The framework should be able to pipeline the packets as much as possible. As the packet payload size is very less for, the time taken to send the program to a node 3 hops away from administrator without pipelining would take factors of time more than what it takes with pipeline.
+
+\item Addressing: To direct the code to the selected group of nodes, there should be some mechanism for that. Scope Selection[1][2] is one of the scheme that is done before transmitting the actual program to direct it towards the nodes. Addressing the nodes could also be done. This is an important issue of how to address the nodes and the intricacies behind it.
+\end{itemize}
+
+\section{OS Requirements}
+
+
+
+References:
+
+[1] Reprogramming Wireless Sensor Networks
+
+[2] 
+
+
+\end{document}
