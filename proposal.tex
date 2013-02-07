@@ -61,11 +61,21 @@ Wireless Routing has been a great subject of study for the past many years. Issu
 
 \section{OS Requirements}
 
+
+
 \section{Related Work}
 
 A lot of work has been done in network programming mechanisms. These basically address the the major problems of how to program?, how to send? and where to send? We will briefly address some of the past work done in this area.
 
-Motes developed in Berkeley are used extensively for network programming. XNP[3]is an implementation for TinyOS that broadcasts the whole program to the network and is a single-hop network. The sensor nodes accept the code depending on their needs individually. MOAP[4] is a multi hop improvement over the XNP. The code dissemination algorithm used in MOAP sends the packets to a few number of nodes rather than flooding the whole network. Deluge[5], MNP[6] and Aqueduct[7] does pipelining for sending the packets and improves upon the MOAP. While Deluge and MNP are for the whole network, Aqueduct is for selected number of nodes. Trickle[8] doesn't support any pipelining but sends the Virtual Machince code instead of sending the whole binary code. This improves upon the number of packets sent but has a disadvantage of computation of the binary mapping at the sensor nodes. TinyCubus[9] is a scheme that instead of sending the whole program sends the modular updates in the program to the sensor nodes. This improves alot over the past implementations in terms of power consumption and network communication. The only issue here is that generally programs are not much modular and it is difficult to change the programs in such a way. Reijer's approach is an incremental scheme using Mate's Virtual Machine Code. Instead of sending the NAtive code, it sends a VM code that is application specific. It works in a single hop network and floods the network. Trickle is not an in
+Motes developed in Berkeley are used extensively for network programming. XNP[3]is an implementation for TinyOS that broadcasts the whole program to the network and is a single-hop network. The sensor nodes accept the code depending on their needs individually. MOAP[4] is a multi hop improvement over the XNP. The code dissemination algorithm used in MOAP sends the packets to a few number of nodes rather than flooding the whole network. Deluge[5], MNP[6] and Aqueduct[7] does pipelining for sending the packets and improves upon the MOAP. While Deluge and MNP are for the whole network, Aqueduct is for selected number of nodes. Reijer's approach[10] doesn't support pipelining but is a platform dependent scheme using Mate's Virtual Machine Code. Instead of sending the Native code, it sends a VM code that is application specific. This improves upon the number of packets sent but has a disadvantage of computation of the binary mapping at the sensor nodes. It works in a single hop network and floods the network. Trickle[8] is an improvement over Reijer's that works on multi-hop networks and doesn't broadcast i.e. flood the network. Incremental[11] approach given by Culler et al. is an approach that updates the programs at the sensor nodes in an incremental manner in such a way that the difference between new program image and old version is computed and writes in the memory are done. This uses a modified version of Rsync algorithm that would work on constraint sensors. TinyCubus[9] is a scheme that instead of sending the whole program sends the modular updates in the program to the sensor nodes. This improves a lot over the past implementations in terms of power consumption and network communication. The only issue here is that generally programs are not much modular and it is difficult to change the programs in such a way.
+\\
+The frameworks given described till assume that there is no hierarchy in the network. Firecracker[12] works for a hierarchichal network and is a multi-hop framework. All of these frameworks have been designed for Berkeley Motes and work on TinyOS environment. Sprinkler[13] is a framework using TDMA as Mac protocol for multi-hop networks and is not designed for the Motes in particular.
+\\
+All these frameworks can be put in different categories as described above in the various sections. We will be aiming towards a general framework with least assumptions for the network.
+
+\section{Applications}
+
+
 
 
 References:
