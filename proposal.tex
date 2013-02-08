@@ -49,8 +49,8 @@ The need of programming is everywhere. In military applications, if a soldier is
 
 \section{Proposed architecture}
 We propose a hierarchical control system(\href{http://en.wikipedia.org/wiki/Hierarchical_control_system}{\nolinkurl{http://en.wikipedia.org/wiki/Hierarchical\_control\_system}})
-\begin{tikzpicture}[level 1/.style={sibling distance=20mm},level 2/.style={sibling distance=4mm},level 3/.style={sibling distance=4mm},level 4/.style={sibling distance=4mm},level 5/.style={sibling distance=4mm},
-every node/.style={font=\tiny, circle, inner sep=1pt, draw}]
+\begin{tikzpicture}[level 1/.style={sibling distance=15mm, level distance=10mm},level 2/.style={sibling distance=3mm},level 3/.style={sibling distance=3mm},level 4/.style={sibling distance=3mm},level 5/.style={sibling distance=3mm},
+every node/.style={font=\tiny, circle, inner sep=0.9pt, draw}]
 \node[circle,draw] (a) {1}
 child{ node [circle,draw] (b) {2}
    child{ node [circle,draw] (c) {3} 
@@ -72,11 +72,16 @@ child{ node [circle,draw] (b) {2}
    }
    child{ node [draw=none] (e) {$\cdots$} }
    child{ node [circle,draw] (f) {3} 
+      child{ node [draw=none] {} edge from parent[draw=none]}
+      child{ node [draw=none] {} edge from parent[draw=none]}
+      child{ node [draw=none] {} edge from parent[draw=none]}
       child{ node [draw=none] {$\vdots$} }
+      child{ node [draw=none] {} edge from parent[draw=none]}
    }
 }
 child{ node [circle,draw] (g) {2} 
    child{ node [circle,draw] (h) {3} 
+      child{ node [draw=none] {} edge from parent[draw=none]}
       child{ node [draw=none] {$\vdots$} }
       child{ node [draw=none] {} edge from parent[draw=none]}
       child{ node [draw=none] {} edge from parent[draw=none]}
