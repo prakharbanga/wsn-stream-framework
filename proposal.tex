@@ -22,12 +22,10 @@ In Section 2 we will describe the Problem Statement we are going to tackle. Furt
 
 For a real simulation, we need to have a prototype network of WSNs to test the design of our framework. For that we take Smart Building design as a proof of concept for our work.
 
-% Our final aim is to extend this system to even handle the mobility issues arising from the dynamic WSNs. The basic problem in mobile nodes is the addressing and networking things get complicated. We will have a design keeping in mind the issues faced by mobile networks.
-
 \section{Problem statement}
 We would like to design a general framework which facilitates and automates manual work required for the deployment and maintenance of WSNs. We want to have a framework such that it is general enough to be used for a lot of applications of WSNs. It should also be programmable so that the job the WSN performs can be changed anytime. Moreover, it should be remotely programmable, so that it can be programmed from a central location. It would also be nice to have the programming paradigm as easy and simple as possible for the programmer.
-Currently most of these problems are handled manually and in an ad-hoc manner. A construction of such a general framework would be analogous to the systematization of databases which happened in the 1960s and 70s, when general-purpose database systems emerged.
-
+Currently most of these problems are handled manually and in an ad-hoc manner. A construction of such a general framework would be analogous to the systematization of databases which happened in the 1960s and 70s, when general-purpose database systems emerged.\\
+Our final aim is to extend this system to even handle the mobility issues arising from the dynamic WSNs. The basic problem in mobile nodes is the addressing and networking things get complicated. We will have a design keeping in mind the issues faced by mobile networks.
 
 \section{Applications}
 WSNs have a wide range of applications. We classify them in two broad areas:
@@ -106,7 +104,7 @@ There are loads of issues in designing a Programming framework for WSNs. Some of
 
 \item \emph{Programming Interface}: The interface for the administrators is also an important issue. It should be easier for a non-programmer to send queries for particular nodes in the network.
 
-\item \emph{Initiation}: There are basically two schemes proposed in the literature of programming these sensors[1]:-
+\item \emph{Initiation}: There are basically two schemes proposed in the literature of programming these sensors\cite{Wang06reprogrammingwireless}:-
 \begin{itemize}
 \item \underline{Code Dissemination}- Initiated by the network administrator where code is send to the individual sensors or group of sensors. This could be for various purposes like fixing bugs, changing network structure, changing programs, etc.
 
@@ -126,7 +124,7 @@ Wireless Routing has been a great subject of study for the past many years. Issu
 
 \item \emph{Pipelining}: The framework should be able to pipeline the packets as much as possible. As the packet payload size is very less for, the time taken to send the program to a node 3 hops away from administrator without pipelining would take factors of time more than what it takes with pipeline.
 
-\item \emph{Addressing}: To direct the code to the selected group of nodes, there should be some mechanism for that. Scope Selection[1][2] is one of the scheme that is done before transmitting the actual program to direct it towards the nodes. Addressing the nodes could also be done. This is an important issue of how to address the nodes and the intricacies behind it.
+\item \emph{Addressing}: To direct the code to the selected group of nodes, there should be some mechanism for that. Scope Selection\cite{Wang06reprogrammingwireless}\cite{Jeong04incrementalnetwork} is one of the scheme that is done before transmitting the actual program to direct it towards the nodes. Addressing the nodes could also be done. This is an important issue of how to address the nodes and the intricacies behind it.
 \end{itemize}
 
 \section{OS Requirements}
@@ -153,28 +151,15 @@ A lot of work has been done in network programming mechanisms. These basically a
 \end{itemize}
 We will briefly address some of the past work done in this area.
 
-Motes developed in Berkeley are used extensively for network programming. XNP[3] is an implementation for TinyOS that broadcasts the whole program to the network and is a single-hop network. The sensor nodes accept the code depending on their needs individually. MOAP[4] is a multi hop improvement over the XNP. The code dissemination algorithm used in MOAP sends the packets to a few number of nodes rather than flooding the whole network. Deluge[5], MNP[6] and Aqueduct[7] does pipelining for sending the packets and improves upon the MOAP. While Deluge and MNP are for the whole network, Aqueduct is for selected number of nodes. Reijer's approach[10] doesn't support pipelining but is a platform dependent scheme using Mate's Virtual Machine Code. Instead of sending the Native code, it sends a VM code that is application specific. This improves upon the number of packets sent but has a disadvantage of computation of the binary mapping at the sensor nodes. It works in a single hop network and floods the network. Trickle[8] is an improvement over Reijer's that works on multi-hop networks and doesn't broadcast i.e. flood the network. Incremental[11] approach given by Culler et al. is an approach that updates the programs at the sensor nodes in an incremental manner in such a way that the difference between new program image and old version is computed and writes in the memory are done. This uses a modified version of Rsync algorithm that would work on constraint sensors. TinyCubus[9] is a scheme that instead of sending the whole program sends the modular updates in the program to the sensor nodes. This improves a lot over the past implementations in terms of power consumption and network communication. The only issue here is that generally programs are not much modular and it is difficult to change the programs in such a way.
+Motes developed in Berkeley are used extensively for network programming. XNP\cite{mote} is an implementation for TinyOS that broadcasts the whole program to the network and is a single-hop network. The sensor nodes accept the code depending on their needs individually. MOAP\cite{Stathopoulos03aremote} is a multi hop improvement over the XNP. The code dissemination algorithm used in MOAP sends the packets to a few number of nodes rather than flooding the whole network. Deluge\cite{Hui04thedynamic}, MNP\cite{Kulkarni05mnp:multihop} and Aqueduct\cite{citeulike:1990821} does pipelining for sending the packets and improves upon the MOAP. While Deluge and MNP are for the whole network, Aqueduct is for selected number of nodes. Reijer's approach\cite{Reijers03efficientcode} doesn't support pipelining but is a platform dependent scheme using Mate's Virtual Machine Code. Instead of sending the Native code, it sends a VM code that is application specific. This improves upon the number of packets sent but has a disadvantage of computation of the binary mapping at the sensor nodes. It works in a single hop network and floods the network. Trickle\cite{Levis04trickle:a} is an improvement over Reijer's that works on multi-hop networks and doesn't broadcast i.e. flood the network. Incremental\cite{Jeong04incrementalnetwork} approach given by Culler et al. is an approach that updates the programs at the sensor nodes in an incremental manner in such a way that the difference between new program image and old version is computed and writes in the memory are done. This uses a modified version of Rsync algorithm that would work on constraint sensors. TinyCubus\cite{Marrón05managementand} is a scheme that instead of sending the whole program sends the modular updates in the program to the sensor nodes. This improves a lot over the past implementations in terms of power consumption and network communication. The only issue here is that generally programs are not much modular and it is difficult to change the programs in such a way.
 \\
-The frameworks given described till assume that there is no hierarchy in the network. Firecracker[12] works for a hierarchichal network and is a multi-hop framework. All of these frameworks have been designed for Berkeley Motes and work on TinyOS environment with CSMA as MAC Layer protocol. Sprinkler[13] is a framework using TDMA as MAC protocol for multi-hop networks and is not designed for the Motes in particular.
+The frameworks given described till assume that there is no hierarchy in the network. Firecracker\cite{Levis04thefirecracker} works for a hierarchichal network and is a multi-hop framework. All of these frameworks have been designed for Berkeley Motes and work on TinyOS environment with CSMA as MAC Layer protocol. Sprinkler\cite{Naik05sprinkler:a} is a framework using TDMA as MAC protocol for multi-hop networks and is not designed for the Motes in particular.
 \\
-The designed frameworks can be put in different categories as described above in the various sections. We will be aiming towards a general framework with least assumptions for the network.
+The designed frameworks can be put in different categories as described above in the various sections.
 
+\newpage
 
-
-References:
-
-[1] Reprogramming Wireless Sensor Networks
-
-[2] Incremental Network Programming for Wireless Sensors
-
-[3] Mote In Network Programming User Reference
-
-[4] A Remote Code Update Mechanism for Wireless Sensor Networks
-
-[5] DELUGE
-
-[6] MNP
-
-
+\bibliographystyle{alpha}
+\bibliography{refs}
 
 \end{document}
