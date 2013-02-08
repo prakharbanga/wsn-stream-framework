@@ -1,10 +1,14 @@
 \documentclass[twocolumn]{article}
 \usepackage{graphicx}
+\usepackage{tikz}
+\usetikzlibrary{positioning,fit}
 \usepackage{enumerate}
-\usepackage{url}
-\usepackage{hyperref}
+\usepackage[breaklinks=true]{hyperref}
+
+\begin{document}
 
 \input{./title.tex}
+
 
 \begin{abstract}
 
@@ -27,13 +31,13 @@ Currently most of these problems are handled manually and in an ad-hoc manner. A
 \section{Applications}
 WSNs have a wide range of applications. We classify them in two broad areas:
 \begin{itemize}
-\item Static WSNs: All nodes have a fixed location. e.g.\ 
+\item Static WSNs: All nodes have a fixed location. e.g.\,
 \begin{itemize}
 \item Environment monitoring: Environment monitoring usually involves measuring critical aspects of the environment, such as the temperature, humidity, air pressure, radiant light etc. It has a wide impact on the understanding of the environment and habitat dynamics.
 \item Smart buildings: A `smart building' is a building which can automate tasks which humans perform. Human presence sensors and motion sensors can be used for the common job of automatically switching the lights and the air conditioner on and off depending on human presence. Less common tasks like detecting excreta can be used in buildings with animals.
 \item Mechanical monitoring: Mechanical monitoring is the monitoring of physical structures, like machines and bridges. Vibrational patterns of these structures can indicate wear-and-tear and can be used to detect upcoming failure.
 \end{itemize}
-\item Dynamic WSNs: Nodes don't have a fixed location. e.g.\
+\item Dynamic WSNs: Nodes don't have a fixed location. e.g.,\
 \begin{itemize}
 \item Military monitoring: Dynamic WSNs have wide applications in the military. One application includes monitoring soldier locations which can be critical in times of war or when the soldiers are in certain high-risk areas. Another application is vehicle surveillance, in which military vehicles are fitted with surveillance equipment and they move around collecting data.
 \item Animal monitoring: Scientists in their quest to understand the habitat dynamics of certain animals, use trackers to collect data about their whereabouts throughout the year. Such monitoring is done very frequently for bird and fish species and yields a lot of interesting results about their year-round migration.
@@ -45,7 +49,40 @@ Of course, the possibilities for WSN applications are endless and any applicatio
 \section{Proposal}
 The proposed architecture is something like this:
 \begin{enumerate}
-\item The whole system is a hierarchical control system(\ref{http://en.wikipedia.org/wiki/Hierarchical_control_system})
+\item The whole system is a hierarchical control system(\href{http://en.wikipedia.org/wiki/Hierarchical_control_system}{\nolinkurl{http://en.wikipedia.org/wiki/Hierarchical\_control\_system}})
+\begin{tikzpicture}[level 1/.style={sibling distance=20mm},level 2/.style={sibling distance=4mm},level 3/.style={sibling distance=0.5mm},level 4/.style={sibling distance=0.5mm},level 5/.style={sibling distance=0.5mm},
+every node/.style={font=\tiny, circle, inner sep=1pt, draw}]
+\node[circle,draw] (a) {1}
+child{ node [circle,draw] (b) {2}
+   child{ node [circle,draw] (c) {3} 
+      child{ node [draw=none] (c1) {$\cdots$}}
+      child{ node [draw=none] (c2) {$\cdots$}
+         child{ node(c21) [circle,draw] {n}}
+      }
+      child{ node [draw=none] (c3) {$\cdots$}}
+      child{ node [draw=none] (c4) {$\cdots$}}
+   }
+   child{ node [circle,draw] (d) {3} }
+   child{ node [draw=none] (e) {$\cdots$} }
+   child{ node [circle,draw] (f) {3} }
+}
+child{ node [circle,draw] (g) {2} 
+   child{ node [circle,draw] (h) {3} }
+   child{ node [circle,draw] (i) {3} }
+   child{ node [draw=none] (j) {$\cdots$} }
+   child{ node [circle,draw] (k) {3} }
+}
+child{ node [draw=none] {$\cdots$} }
+child{ node [circle,draw]{2} 
+   child{ node [circle,draw]{3} }
+   child{ node [circle,draw]{3} }
+   child{ node [draw=none] {$\cdots$} }
+   child{ node [circle,draw]{3} }
+}
+;
+\end{tikzpicture}
+
+\item Every node and sensor has a set of 
 \item The system doesn’t assume that nodes and sensors have unique ids(IP addresses, MAC addresses etc.)
 
 \item Every node and sensor has a set of properties, which are used to diffuse tasks/queries through the network. Therefore, all multicast is property-based.
@@ -91,9 +128,14 @@ Wireless Routing has been a great subject of study for the past many years. Issu
 
 \section{Related Work}
 
-A lot of work has been done in network programming mechanisms. These basically address the the major problems of how to program?, how to send? and where to send? We will briefly address some of the past work done in this area.
+A lot of work has been done in network programming mechanisms. These basically address the the major problems:
+\begin{itemize}
+\item How to program the system?
+\item How to send sensor data?
+\end{itemize}
+We will briefly address some of the past work done in this area.
 
-Motes developed in Berkeley are used extensively for network programming. XNP[3]is an implementation for TinyOS that broadcasts the whole program to the network and is a single-hop network. The sensor nodes accept the code depending on their needs individually. MOAP[4] is a multi hop improvement over the XNP. The code dissemination algorithm used in MOAP sends the packets to a few number of nodes rather than flooding the whole network. Deluge[5], MNP[6] and Aqueduct[7] does pipelining for sending the packets and improves upon the MOAP. While Deluge and MNP are for the whole network, Aqueduct is for selected number of nodes. Reijer's approach[10] doesn't support pipelining but is a platform dependent scheme using Mate's Virtual Machine Code. Instead of sending the Native code, it sends a VM code that is application specific. This improves upon the number of packets sent but has a disadvantage of computation of the binary mapping at the sensor nodes. It works in a single hop network and floods the network. Trickle[8] is an improvement over Reijer's that works on multi-hop networks and doesn't broadcast i.e. flood the network. Incremental[11] approach given by Culler et al. is an approach that updates the programs at the sensor nodes in an incremental manner in such a way that the difference between new program image and old version is computed and writes in the memory are done. This uses a modified version of Rsync algorithm that would work on constraint sensors. TinyCubus[9] is a scheme that instead of sending the whole program sends the modular updates in the program to the sensor nodes. This improves a lot over the past implementations in terms of power consumption and network communication. The only issue here is that generally programs are not much modular and it is difficult to change the programs in such a way.
+Motes developed in Berkeley are used extensively for network programming. XNP[3] is an implementation for TinyOS that broadcasts the whole program to the network and is a single-hop network. The sensor nodes accept the code depending on their needs individually. MOAP[4] is a multi hop improvement over the XNP. The code dissemination algorithm used in MOAP sends the packets to a few number of nodes rather than flooding the whole network. Deluge[5], MNP[6] and Aqueduct[7] does pipelining for sending the packets and improves upon the MOAP. While Deluge and MNP are for the whole network, Aqueduct is for selected number of nodes. Reijer's approach[10] doesn't support pipelining but is a platform dependent scheme using Mate's Virtual Machine Code. Instead of sending the Native code, it sends a VM code that is application specific. This improves upon the number of packets sent but has a disadvantage of computation of the binary mapping at the sensor nodes. It works in a single hop network and floods the network. Trickle[8] is an improvement over Reijer's that works on multi-hop networks and doesn't broadcast i.e. flood the network. Incremental[11] approach given by Culler et al. is an approach that updates the programs at the sensor nodes in an incremental manner in such a way that the difference between new program image and old version is computed and writes in the memory are done. This uses a modified version of Rsync algorithm that would work on constraint sensors. TinyCubus[9] is a scheme that instead of sending the whole program sends the modular updates in the program to the sensor nodes. This improves a lot over the past implementations in terms of power consumption and network communication. The only issue here is that generally programs are not much modular and it is difficult to change the programs in such a way.
 \\
 The frameworks given described till assume that there is no hierarchy in the network. Firecracker[12] works for a hierarchichal network and is a multi-hop framework. All of these frameworks have been designed for Berkeley Motes and work on TinyOS environment with CSMA as MAC Layer protocol. Sprinkler[13] is a framework using TDMA as MAC protocol for multi-hop networks and is not designed for the Motes in particular.
 \\
