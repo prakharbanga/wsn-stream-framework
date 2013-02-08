@@ -30,7 +30,7 @@ Our final aim is to extend this system to even handle the mobility issues arisin
 \section{Applications}
 WSNs have a wide range of applications. We classify them in two broad areas:
 \begin{itemize}
-\item Static WSNs: All nodes have a fixed location. e.g.,\
+\item Static WSNs: All nodes have a fixed location. e.g.\,
 \begin{itemize}
 \item Environment monitoring: Environment monitoring usually involves measuring critical aspects of the environment, such as the temperature, humidity, air pressure, radiant light etc. It has a wide impact on the understanding of the environment and habitat dynamics. Our framework would be very useful in deployiong such a system quickly and maintaining it for longer lifetime.
 \item Smart buildings: A `smart building' is a building which can automate tasks which humans perform. Human presence sensors and motion sensors can be used for the common job of automatically switching the lights and the air conditioner on and off depending on human presence. Less common tasks like detecting excreta can be used in buildings having animals. We will focus on deploying and maintaining such a system as a proof of concept for our framework.
@@ -54,34 +54,22 @@ every node/.style={font=\tiny, circle, inner sep=1pt, draw}]
 \node[circle,draw] (a) {1}
 child{ node [circle,draw] (b) {2}
    child{ node [circle,draw] (c) {3} 
+      child{ node [draw=none] (c1) {} edge from parent[draw=none]}
       child{ node [draw=none] (c2) {$\vdots$}
          child{ node [circle,draw] (c21) {n} }
          child{ node [circle,draw] (c22) {n} }
          child{ node [draw=none] (c23) {$\cdots$} }
          child{ node [circle,draw] (c24) {n} }
       }
-      child{ node [draw=none] (c1) {} edge from parent[draw=none]}
       child{ node [draw=none] (c3) {} edge from parent[draw=none]}
       child{ node [draw=none] (c4) {} edge from parent[draw=none]}
    }
-   child{ node [circle,draw] (d) {3} 
-      child{ node [draw=none] {} edge from parent[draw=none]}
-      child{ node [draw=none] {$\vdots$} }
-      child{ node [draw=none] {} edge from parent[draw=none]}
-      child{ node [draw=none] {} edge from parent[draw=none]}
-   }
+   child{ node [circle,draw] (d) {3} }
    child{ node [draw=none] (e) {$\cdots$} }
-   child{ node [circle,draw] (f) {3} 
-      child{ node [draw=none] {$\vdots$} }
-   }
+   child{ node [circle,draw] (f) {3} }
 }
 child{ node [circle,draw] (g) {2} 
-   child{ node [circle,draw] (h) {3} 
-      child{ node [draw=none] {$\vdots$} }
-      child{ node [draw=none] {} edge from parent[draw=none]}
-      child{ node [draw=none] {} edge from parent[draw=none]}
-      child{ node [draw=none] {} edge from parent[draw=none]}
-   }
+   child{ node [circle,draw] (h) {3} }
    child{ node [circle,draw] (i) {3} 
       child{ node [draw=none] (i1) {} edge from parent[draw=none]}
       child{ node [draw=none] (i2) {$\vdots$}

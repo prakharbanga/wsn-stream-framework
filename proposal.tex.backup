@@ -30,7 +30,7 @@ Our final aim is to extend this system to even handle the mobility issues arisin
 \section{Applications}
 WSNs have a wide range of applications. We classify them in two broad areas:
 \begin{itemize}
-\item Static WSNs: All nodes have a fixed location. e.g.,\
+\item Static WSNs: All nodes have a fixed location. e.g.\,
 \begin{itemize}
 \item Environment monitoring: Environment monitoring usually involves measuring critical aspects of the environment, such as the temperature, humidity, air pressure, radiant light etc. It has a wide impact on the understanding of the environment and habitat dynamics. Our framework would be very useful in deployiong such a system quickly and maintaining it for longer lifetime.
 \item Smart buildings: A `smart building' is a building which can automate tasks which humans perform. Human presence sensors and motion sensors can be used for the common job of automatically switching the lights and the air conditioner on and off depending on human presence. Less common tasks like detecting excreta can be used in buildings having animals. We will focus on deploying and maintaining such a system as a proof of concept for our framework.
@@ -47,116 +47,48 @@ Of course, the possibilities for WSN applications are endless and any applicatio
 
 The need of programming is everywhere. In military applications, if a soldier is shot, then a program can be changed for the sensor nodes monitoring his health to send the data at the base station regularly and more often as compared to other soldiers. Same in the case of animal tracking system. In `Smart Buildings', reprogramming can help changing the programs or tuning the thresholds in programs running at the nodes in different locations. There is an emense scope and need for reprogramming of these WSN frameworks.
 
-\section{Proposed architecture}
-We propose a hierarchical control system(\href{http://en.wikipedia.org/wiki/Hierarchical_control_system}{\nolinkurl{http://en.wikipedia.org/wiki/Hierarchical\_control\_system}})
-\begin{tikzpicture}[level 1/.style={sibling distance=20mm},level 2/.style={sibling distance=4mm},level 3/.style={sibling distance=4mm},level 4/.style={sibling distance=4mm},level 5/.style={sibling distance=4mm},
+\section{Proposal}
+The proposed architecture is something like this:
+\begin{enumerate}
+\item The whole system is a hierarchical control system(\href{http://en.wikipedia.org/wiki/Hierarchical_control_system}{\nolinkurl{http://en.wikipedia.org/wiki/Hierarchical\_control\_system}})
+\begin{tikzpicture}[level 1/.style={sibling distance=20mm},level 2/.style={sibling distance=4mm},level 3/.style={sibling distance=0.5mm},level 4/.style={sibling distance=0.5mm},level 5/.style={sibling distance=0.5mm},
 every node/.style={font=\tiny, circle, inner sep=1pt, draw}]
 \node[circle,draw] (a) {1}
 child{ node [circle,draw] (b) {2}
    child{ node [circle,draw] (c) {3} 
-      child{ node [draw=none] (c2) {$\vdots$}
-         child{ node [circle,draw] (c21) {n} }
-         child{ node [circle,draw] (c22) {n} }
-         child{ node [draw=none] (c23) {$\cdots$} }
-         child{ node [circle,draw] (c24) {n} }
+      child{ node [draw=none] (c1) {$\cdots$}}
+      child{ node [draw=none] (c2) {$\cdots$}
+         child{ node(c21) [circle,draw] {n}}
       }
-      child{ node [draw=none] (c1) {} edge from parent[draw=none]}
-      child{ node [draw=none] (c3) {} edge from parent[draw=none]}
-      child{ node [draw=none] (c4) {} edge from parent[draw=none]}
+      child{ node [draw=none] (c3) {$\cdots$}}
+      child{ node [draw=none] (c4) {$\cdots$}}
    }
-   child{ node [circle,draw] (d) {3} 
-      child{ node [draw=none] {} edge from parent[draw=none]}
-      child{ node [draw=none] {$\vdots$} }
-      child{ node [draw=none] {} edge from parent[draw=none]}
-      child{ node [draw=none] {} edge from parent[draw=none]}
-   }
+   child{ node [circle,draw] (d) {3} }
    child{ node [draw=none] (e) {$\cdots$} }
-   child{ node [circle,draw] (f) {3} 
-      child{ node [draw=none] {$\vdots$} }
-   }
+   child{ node [circle,draw] (f) {3} }
 }
 child{ node [circle,draw] (g) {2} 
-   child{ node [circle,draw] (h) {3} 
-      child{ node [draw=none] {$\vdots$} }
-      child{ node [draw=none] {} edge from parent[draw=none]}
-      child{ node [draw=none] {} edge from parent[draw=none]}
-      child{ node [draw=none] {} edge from parent[draw=none]}
-   }
-   child{ node [circle,draw] (i) {3} 
-      child{ node [draw=none] (i1) {} edge from parent[draw=none]}
-      child{ node [draw=none] (i2) {$\vdots$}
-         child{ node [circle,draw] (i21) {n} }
-         child{ node [circle,draw] (i22) {n} }
-         child{ node [draw=none] (i23) {$\cdots$} }
-         child{ node [circle,draw] (i24) {n} }
-      }
-      child{ node [draw=none] (i3) {} edge from parent[draw=none]}
-      child{ node [draw=none] (i4) {} edge from parent[draw=none]}
-   }
+   child{ node [circle,draw] (h) {3} }
+   child{ node [circle,draw] (i) {3} }
    child{ node [draw=none] (j) {$\cdots$} }
-   child{ node [circle,draw] (k) {3} 
-      child{ node [draw=none] {} edge from parent[draw=none]}
-      child{ node [draw=none] {} edge from parent[draw=none]}
-      child{ node [draw=none] {} edge from parent[draw=none]}
-      child{ node [draw=none] {$\vdots$} }
-   }
+   child{ node [circle,draw] (k) {3} }
 }
-child{ node [draw=none] (l) {$\cdots$} }
-child{ node [circle,draw] (m) {2} 
-   child{ node [circle,draw](n){3} 
-      child{ node [draw=none] {$\vdots$} }
-      child{ node [draw=none] {} edge from parent[draw=none]}
-      child{ node [draw=none] {} edge from parent[draw=none]}
-      child{ node [draw=none] {} edge from parent[draw=none]}
-   }
-   child{ node [circle,draw](o){3} 
-      child{ node [draw=none] {} edge from parent[draw=none]}
-      child{ node [draw=none] {$\vdots$} }
-      child{ node [draw=none] {} edge from parent[draw=none]}
-      child{ node [draw=none] {} edge from parent[draw=none]}
-   }
-   child{ node [draw=none] (p){$\cdots$} }
-   child{ node [circle,draw](q){3} 
-      child{ node [draw=none] (q1) {} edge from parent[draw=none]}
-      child{ node [draw=none] (q2) {} edge from parent[draw=none]}
-      child{ node [draw=none] (q3) {} edge from parent[draw=none]}
-      child{ node [draw=none] (q4) {$\vdots$}
-         child{ node [circle,draw] (q41) {n} }
-         child{ node [circle,draw] (q42) {n} }
-         child{ node [draw=none] (q43) {$\cdots$} }
-         child{ node [circle,draw] (q44) {n} }
-      }
-   }
+child{ node [draw=none] {$\cdots$} }
+child{ node [circle,draw]{2} 
+   child{ node [circle,draw]{3} }
+   child{ node [circle,draw]{3} }
+   child{ node [draw=none] {$\cdots$} }
+   child{ node [circle,draw]{3} }
 }
 ;
 \end{tikzpicture}
 
-We handle the general case with n layers of nodes, where each node(except the lowest layer):
-\begin{itemize}
-\item Assigns `tasks' to its children
-\item Gathers data from its children
-\item Processes the gathered data and sends data back to its parent
-\end{itemize}
-A node in the lowest layer(i.e.,\ the sensors) sends to the parent either raw sensor data or data processed with the limited processing abilities they have.\\
+\item Every node and sensor has a set of 
+\item The system doesn’t assume that nodes and sensors have unique ids(IP addresses, MAC addresses etc.)
 
-The `tasks' of these nodes are programs in an SQL-like language aimed at filtering data.\\
-
-Every node has a set of properties, in the form of attribute-value pairs, such as:\\
-
-\begin{tabular}{|l|l|}
-\hline
-Attribute & Value \\
-\hline
-A1 & V1 \\
-A2 & V2 \\
-A3 & V3 \\
-\vdots & \vdots \\
-Ak & Vk \\
-\hline
-\end{tabular} \\
-
-These properties can be used for the distribution and diffusion of tasks in the network. For instance, a geographic location property might be used to perform a particular task in a particular area.\\
-
+\item Every node and sensor has a set of properties, which are used to diffuse tasks/queries through the network. Therefore, all multicast is property-based.
+\item The tasks/queries are written in an SQL-like language
+\end{enumerate}
 
 \section{Programming Paradigm}
 
@@ -219,13 +151,18 @@ A lot of work has been done in network programming mechanisms. These basically a
 \end{itemize}
 We will briefly address some of the past work done in this area.
 
-Motes developed in Berkeley are used extensively for network programming. XNP\cite{mote} is an implementation for TinyOS that broadcasts the whole program to the network and is a single-hop network. The sensor nodes accept the code depending on their needs individually. MOAP\cite{Stathopoulos03aremote} is a multi hop improvement over the XNP. The code dissemination algorithm used in MOAP sends the packets to a few number of nodes rather than flooding the whole network. Deluge\cite{Hui04thedynamic}, MNP\cite{Kulkarni05mnp:multihop} and Aqueduct\cite{citeulike:1990821} does pipelining for sending the packets and improves upon the MOAP. While Deluge and MNP are for the whole network, Aqueduct is for selected number of nodes. Reijer's approach\cite{Reijers03efficientcode} doesn't support pipelining but is a platform dependent scheme using Mate's Virtual Machine Code. Instead of sending the Native code, it sends a VM code that is application specific. This improves upon the number of packets sent but has a disadvantage of computation of the binary mapping at the sensor nodes. It works in a single hop network and floods the network. Trickle\cite{Levis04trickle:a} is an improvement over Reijer's that works on multi-hop networks and doesn't broadcast i.e. flood the network. Incremental\cite{Jeong04incrementalnetwork} approach given by Culler et al. is an approach that updates the programs at the sensor nodes in an incremental manner in such a way that the difference between new program image and old version is computed and writes in the memory are done. This uses a modified version of Rsync algorithm that would work on constraint sensors. TinyCubus\cite{Marrón05managementand} is a scheme that instead of sending the whole program sends the modular updates in the program to the sensor nodes. This improves a lot over the past implementations in terms of power consumption and network communication. The only issue here is that generally programs are not much modular and it is difficult to change the programs in such a way.
+Motes developed in Berkeley are used extensively for network programming. XNP\cite{mote} is an implementation for TinyOS that broadcasts the whole program to the network and is a single-hop network. The sensor nodes accept the code depending on their needs individually. MOAP\cite{Stathopoulos03aremote} is a multi hop improvement over the XNP. The code dissemination algorithm used in MOAP sends the packets to a few number of nodes rather than flooding the whole network. Deluge\cite{Hui04thedynamic}, MNP\cite{Kulkarni05mnp:multihop} and Aqueduct[7] does pipelining for sending the packets and improves upon the MOAP. While Deluge and MNP are for the whole network, Aqueduct is for selected number of nodes. Reijer's approach[10] doesn't support pipelining but is a platform dependent scheme using Mate's Virtual Machine Code. Instead of sending the Native code, it sends a VM code that is application specific. This improves upon the number of packets sent but has a disadvantage of computation of the binary mapping at the sensor nodes. It works in a single hop network and floods the network. Trickle\cite{Levis04trickle:a} is an improvement over Reijer's that works on multi-hop networks and doesn't broadcast i.e. flood the network. Incremental[11] approach given by Culler et al. is an approach that updates the programs at the sensor nodes in an incremental manner in such a way that the difference between new program image and old version is computed and writes in the memory are done. This uses a modified version of Rsync algorithm that would work on constraint sensors. TinyCubus[9] is a scheme that instead of sending the whole program sends the modular updates in the program to the sensor nodes. This improves a lot over the past implementations in terms of power consumption and network communication. The only issue here is that generally programs are not much modular and it is difficult to change the programs in such a way.
 \\
-The frameworks given described till assume that there is no hierarchy in the network. Firecracker\cite{Levis04thefirecracker} works for a hierarchichal network and is a multi-hop framework. All of these frameworks have been designed for Berkeley Motes and work on TinyOS environment with CSMA as MAC Layer protocol. Sprinkler\cite{Naik05sprinkler:a} is a framework using TDMA as MAC protocol for multi-hop networks and is not designed for the Motes in particular.
+The frameworks given described till assume that there is no hierarchy in the network. Firecracker[12] works for a hierarchichal network and is a multi-hop framework. All of these frameworks have been designed for Berkeley Motes and work on TinyOS environment with CSMA as MAC Layer protocol. Sprinkler[13] is a framework using TDMA as MAC protocol for multi-hop networks and is not designed for the Motes in particular.
 \\
 The designed frameworks can be put in different categories as described above in the various sections.
 
-\newpage
+
+
+References:
+
+
+
 
 \bibliographystyle{alpha}
 \bibliography{refs}
