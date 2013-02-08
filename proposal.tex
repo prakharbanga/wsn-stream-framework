@@ -46,21 +46,22 @@ Of course, the possibilities for WSN applications are endless and any applicatio
 \end{itemize}
 \end{itemize}
 
-\section{Proposal}
-The proposed architecture is something like this:
-\begin{enumerate}
-\item The whole system is a hierarchical control system(\href{http://en.wikipedia.org/wiki/Hierarchical_control_system}{\nolinkurl{http://en.wikipedia.org/wiki/Hierarchical\_control\_system}})
-\begin{tikzpicture}[level 1/.style={sibling distance=20mm},level 2/.style={sibling distance=4mm},level 3/.style={sibling distance=0.5mm},level 4/.style={sibling distance=0.5mm},level 5/.style={sibling distance=0.5mm},
+\section{Proposed architecture}
+We propose a hierarchical control system(\href{http://en.wikipedia.org/wiki/Hierarchical_control_system}{\nolinkurl{http://en.wikipedia.org/wiki/Hierarchical\_control\_system}})
+\begin{tikzpicture}[level 1/.style={sibling distance=20mm},level 2/.style={sibling distance=4mm},level 3/.style={sibling distance=4mm},level 4/.style={sibling distance=4mm},level 5/.style={sibling distance=4mm},
 every node/.style={font=\tiny, circle, inner sep=1pt, draw}]
 \node[circle,draw] (a) {1}
 child{ node [circle,draw] (b) {2}
    child{ node [circle,draw] (c) {3} 
-      child{ node [draw=none] (c1) {$\cdots$}}
-      child{ node [draw=none] (c2) {$\cdots$}
-         child{ node(c21) [circle,draw] {n}}
+      child{ node [draw=none] (c1) {} edge from parent[draw=none]}
+      child{ node [draw=none] (c2) {$\vdots$}
+         child{ node [circle,draw] (c21) {n} }
+         child{ node [circle,draw] (c22) {n} }
+         child{ node [draw=none] (c23) {$\cdots$} }
+         child{ node [circle,draw] (c24) {n} }
       }
-      child{ node [draw=none] (c3) {$\cdots$}}
-      child{ node [draw=none] (c4) {$\cdots$}}
+      child{ node [draw=none] (c3) {} edge from parent[draw=none]}
+      child{ node [draw=none] (c4) {} edge from parent[draw=none]}
    }
    child{ node [circle,draw] (d) {3} }
    child{ node [draw=none] (e) {$\cdots$} }
@@ -68,26 +69,81 @@ child{ node [circle,draw] (b) {2}
 }
 child{ node [circle,draw] (g) {2} 
    child{ node [circle,draw] (h) {3} }
-   child{ node [circle,draw] (i) {3} }
+   child{ node [circle,draw] (i) {3} 
+      child{ node [draw=none] (i1) {} edge from parent[draw=none]}
+      child{ node [draw=none] (i2) {$\vdots$}
+         child{ node [circle,draw] (i21) {n} }
+         child{ node [circle,draw] (i22) {n} }
+         child{ node [draw=none] (i23) {$\cdots$} }
+         child{ node [circle,draw] (i24) {n} }
+      }
+      child{ node [draw=none] (i3) {} edge from parent[draw=none]}
+      child{ node [draw=none] (i4) {} edge from parent[draw=none]}
+   }
    child{ node [draw=none] (j) {$\cdots$} }
-   child{ node [circle,draw] (k) {3} }
+   child{ node [circle,draw] (k) {3} 
+      child{ node [draw=none] {} edge from parent[draw=none]}
+      child{ node [draw=none] {} edge from parent[draw=none]}
+      child{ node [draw=none] {} edge from parent[draw=none]}
+      child{ node [draw=none] {$\vdots$} }
+   }
 }
-child{ node [draw=none] {$\cdots$} }
-child{ node [circle,draw]{2} 
-   child{ node [circle,draw]{3} }
-   child{ node [circle,draw]{3} }
-   child{ node [draw=none] {$\cdots$} }
-   child{ node [circle,draw]{3} }
+child{ node [draw=none] (l) {$\cdots$} }
+child{ node [circle,draw] (m) {2} 
+   child{ node [circle,draw](n){3} 
+      child{ node [draw=none] {$\vdots$} }
+      child{ node [draw=none] {} edge from parent[draw=none]}
+      child{ node [draw=none] {} edge from parent[draw=none]}
+      child{ node [draw=none] {} edge from parent[draw=none]}
+   }
+   child{ node [circle,draw](o){3} 
+      child{ node [draw=none] {} edge from parent[draw=none]}
+      child{ node [draw=none] {$\vdots$} }
+      child{ node [draw=none] {} edge from parent[draw=none]}
+      child{ node [draw=none] {} edge from parent[draw=none]}
+   }
+   child{ node [draw=none] (p){$\cdots$} }
+   child{ node [circle,draw](q){3} 
+      child{ node [draw=none] (q1) {} edge from parent[draw=none]}
+      child{ node [draw=none] (q2) {} edge from parent[draw=none]}
+      child{ node [draw=none] (q3) {} edge from parent[draw=none]}
+      child{ node [draw=none] (q4) {$\vdots$}
+         child{ node [circle,draw] (q41) {n} }
+         child{ node [circle,draw] (q42) {n} }
+         child{ node [draw=none] (q43) {$\cdots$} }
+         child{ node [circle,draw] (q44) {n} }
+      }
+   }
 }
 ;
 \end{tikzpicture}
 
-\item Every node and sensor has a set of 
-\item The system doesn’t assume that nodes and sensors have unique ids(IP addresses, MAC addresses etc.)
+We handle the general case with n layers of nodes, where each node(except the lowest layer):
+\begin{itemize}
+\item Assigns `tasks' to its children
+\item Gathers data from its children
+\item Processes the gathered data and sends data back to its parent
+\end{itemize}
+A node in the lowest layer(i.e.,\ the sensors) sends to the parent either raw sensor data or data processed with the limited processing abilities they have.\\
 
-\item Every node and sensor has a set of properties, which are used to diffuse tasks/queries through the network. Therefore, all multicast is property-based.
-\item The tasks/queries are written in an SQL-like language
-\end{enumerate}
+The `tasks' of these nodes are programs in an SQL-like language aimed at filtering data.\\
+
+Every node has a set of properties, in the form of attribute-value pairs, such as:\\
+
+\begin{tabular}{|l|l|}
+\hline
+Attribute & Value \\
+\hline
+A1 & V1 \\
+A2 & V2 \\
+A3 & V3 \\
+\vdots & \vdots \\
+Ak & Vk \\
+\hline
+\end{tabular} \\
+
+These properties can be used for the distribution and diffusion of tasks in the network. For instance, a geographic location property might be used to perform a particular task in a particular area.\\
+
 
 \section{Programming Paradigm}
 
