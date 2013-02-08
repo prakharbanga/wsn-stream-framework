@@ -1,0 +1,72 @@
+\newcommand{\etalchar}[1]{$^{#1}$}
+\begin{thebibliography}{MLM{\etalchar{+}}05}
+
+\bibitem[CT03]{mote}
+Inc. Crossbow~Technology.
+\newblock Mote in-network programming user reference.
+\newblock 2003.
+
+\bibitem[HC04]{Hui04thedynamic}
+Jonathan~W. Hui and David Culler.
+\newblock The dynamic behavior of a data dissemination protocol for network
+  programming at scale.
+\newblock In {\em In Proceedings of the 2nd international}, pages 81--94. ACM
+  Press, 2004.
+
+\bibitem[Jeo04]{Jeong04incrementalnetwork}
+Jaein Jeong.
+\newblock Incremental network programming for wireless sensors.
+\newblock In {\em In Proceedings of the First IEEE Communications Society
+  Conference on Sensor and Ad Hoc Communications and Networks IEEE SECON},
+  pages 25--33, 2004.
+
+\bibitem[KW05]{Kulkarni05mnp:multihop}
+Sandeep~S. Kulkarni and Limin Wang.
+\newblock Mnp: Multihop network reprogramming service for sensor networks.
+\newblock In {\em In Proceedings of the 25th International Conference on
+  Distributed Computing Systems (ICDCS}, pages 7--16, 2005.
+
+\bibitem[LC04]{Levis04thefirecracker}
+Philip Levis and David Culler.
+\newblock The firecracker protocol, 2004.
+
+\bibitem[LPCS04]{Levis04trickle:a}
+Philip Levis, Neil Patel, David Culler, and Scott Shenker.
+\newblock Trickle: A self-regulating algorithm for code propagation and
+  maintenance in wireless sensor networks.
+\newblock In {\em In Proceedings of the First USENIX/ACM Symposium on Networked
+  Systems Design and Implementation (NSDI}, pages 15--28, 2004.
+
+\bibitem[MLM{\etalchar{+}}05]{Marrón05managementand}
+Pedro~José Marrón, Andreas Lachenmann, Daniel Minder, Matthias Gauger, Olga
+  Saukh, and Kurt Rothermel.
+\newblock Management and configuration issues for sensor networks.
+\newblock {\em International Journal of Network Management}, 15:235--253, 2005.
+
+\bibitem[NAZS05]{Naik05sprinkler:a}
+Vinayak Naik, Anish Arora, Hongwei Zhang, and Prasun Sinha.
+\newblock Sprinkler: A reliable and energy efficient data dissemination service
+  for wireless embedded devices.
+\newblock In {\em In Proceedings of the 26th IEEE Real-Time Systems Symposium
+  (RTSS}, 2005.
+
+\bibitem[Phi]{citeulike:1990821}
+Lane~A. Phillips.
+\newblock {Aqueduct:Robust} and efficient code propagation in heterogeneous
+  wireless sensor networks.
+
+\bibitem[Rei03]{Reijers03efficientcode}
+Niels~Reijers Reijers.
+\newblock Efficient code distribution in wireless sensor networks, 2003.
+
+\bibitem[SHE03]{Stathopoulos03aremote}
+Thanos Stathopoulos, John Heidemann, and Deborah Estrin.
+\newblock A remote code update mechanism for wireless sensor networks.
+\newblock Technical report, 2003.
+
+\bibitem[WZC06]{Wang06reprogrammingwireless}
+Qiang Wang, Yaoyao Zhu, and Liang Cheng.
+\newblock Reprogramming wireless sensor networks: Challenges and approaches.
+\newblock {\em IEEE Network}, 2006.
+
+\end{thebibliography}

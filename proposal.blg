@@ -1,0 +1,54 @@
+This is BibTeX, Version 0.99c (TeX Live 2009/Debian)
+The top-level auxiliary file: proposal.aux
+The style file: alpha.bst
+Database file #1: refs.bib
+Repeated entry---line 71 of file refs.bib
+ : @inproceedings{Jeong04incrementalnetwork
+ :                                         ,
+I'm skipping whatever remains of this entry
+Warning--empty journal in mote
+Warning--empty journal in citeulike:1990821
+Warning--empty year in citeulike:1990821
+Warning--empty institution in Stathopoulos03aremote
+You've used 12 entries,
+            2543 wiz_defined-function locations,
+            622 strings with 6708 characters,
+and the built_in function-call counts, 4796 in all, are:
+= -- 465
+> -- 241
+< -- 8
++ -- 86
+- -- 83
+* -- 311
+:= -- 784
+add.period$ -- 34
+call.type$ -- 12
+change.case$ -- 79
+chr.to.int$ -- 12
+cite$ -- 16
+duplicate$ -- 199
+empty$ -- 351
+format.name$ -- 97
+if$ -- 986
+int.to.chr$ -- 1
+int.to.str$ -- 0
+missing$ -- 9
+newline$ -- 61
+num.names$ -- 36
+pop$ -- 100
+preamble$ -- 1
+purify$ -- 90
+quote$ -- 0
+skip$ -- 174
+stack$ -- 0
+substring$ -- 203
+swap$ -- 40
+text.length$ -- 8
+text.prefix$ -- 3
+top$ -- 0
+type$ -- 96
+warning$ -- 4
+while$ -- 46
+width$ -- 15
+write$ -- 145
+(There was 1 error message)
