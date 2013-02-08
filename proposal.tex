@@ -58,17 +58,17 @@ In most of the cases the sensor networks are deployed and then any change in the
 
 There are loads of issues in designing a Programming framework for WSNs. Some of them are:
 \begin{enumerate}[a)]
-\item Program Length: The packets needed to send a large program code would be high and the network congestion increases if large number of packets are send. Also, the power constraints make such communication difficult for the multi-hop sensors. The compute power and memory is also another constraint which will come into place if the Program Code is very big.
+\item \emph{Program Length}: The packets needed to send a large program code would be high and the network congestion increases if large number of packets are send. Also, the power constraints make such communication difficult for the multi-hop sensors. The compute power and memory is also another constraint which will come into place if the Program Code is very big.
 
-\item Binary Program: Sending binary program also makes the above issues worse. As said before, the computer power of sensor nodes is very less. Having a compiler at each of the nodes individually is not feasible in a large sensor network and therefore we need to send the large binary code.
+\item \emph{Binary Program}: Sending binary program also makes the above issues worse. As said before, the computer power of sensor nodes is very less. Having a compiler at each of the nodes individually is not feasible in a large sensor network and therefore we need to send the large binary code.
 
-\item Version Control: The dynamic reprogramming have this issue of different versions for programs at various nodes. This version control can be done at the administrator or at the nodes itself.The design of the framework should be such that the whole network should be scalable and reliable keeping in mind the constraints.
+\item \emph{Version Control}: The dynamic reprogramming have this issue of different versions for programs at various nodes. This version control can be done at the administrator or at the nodes itself.The design of the framework should be such that the whole network should be scalable and reliable keeping in mind the constraints.
 
-\item Programming Interface: The interface for the administrators is also an important issue. It should be easier for a non-programmer to send queries for particular nodes in the network.
+\item \emph{Programming Interface}: The interface for the administrators is also an important issue. It should be easier for a non-programmer to send queries for particular nodes in the network.
 
-\item Initiation: There are basically two schemes proposed in the literature of programming these sensors[1]:-
-1. Code Dissemination- Initiated by the network administrator where code is send to the individual sensors or group of sensors. This could be for various purposes like fixing bugs, changing network structure, changing programs, etc.
-2. Code Acquisition- This is initiated by sensor nodes themselves as per need or per changing surrounding.
+\item \emph{Initiation}: There are basically two schemes proposed in the literature of programming these sensors[1]:-
+1. \underline{Code Dissemination}- Initiated by the network administrator where code is send to the individual sensors or group of sensors. This could be for various purposes like fixing bugs, changing network structure, changing programs, etc.
+2. \underline{Code Acquisition}- This is initiated by sensor nodes themselves as per need or per changing surrounding.
 The choice depends on what gives you the best performance in overall ways.
 \end{enumerate}
 
@@ -76,18 +76,28 @@ The choice depends on what gives you the best performance in overall ways.
 
 Wireless Routing has been a great subject of study for the past many years. Issues like reliability, security, quick transmission, etc. are the need for the wireless communication protocols. In the case of WSNs, the requirements for these protocols increase more than mere Wireless networking. Some of the issues faced in routing the packets and networking in WSNs are:
 \begin{itemize}
-\item Hops: To make a general framework the network should be able to handle both the single-hop and multihop transmissions. For remote sensor networks applications, multi hop reprogramming is a need. There are power constraints in nodes that are used frequently to transmit the programs from administrator to far flung nodes in multi hop nets.
+\item \emph{Hops}: To make a general framework the network should be able to handle both the single-hop and multihop transmissions. For remote sensor networks applications, multi hop reprogramming is a need. There are power constraints in nodes that are used frequently to transmit the programs from administrator to far flung nodes in multi hop nets.
 
-\item Scheduling: Scheduling issues is also a great concern for reliable and quick transmission. To handle the Hidden Terminal problem we can’t use the conventional solution due to the resource constraints. Avoiding as many collisions as possible is basically the need.
+\item \emph{Scheduling}: Scheduling issues is also a great concern for reliable and quick transmission. To handle the Hidden Terminal problem we can’t use the conventional solution due to the resource constraints. Avoiding as many collisions as possible is basically the need.
 
-\item Pipelining: The framework should be able to pipeline the packets as much as possible. As the packet payload size is very less for, the time taken to send the program to a node 3 hops away from administrator without pipelining would take factors of time more than what it takes with pipeline.
+\item \emph{Pipelining}: The framework should be able to pipeline the packets as much as possible. As the packet payload size is very less for, the time taken to send the program to a node 3 hops away from administrator without pipelining would take factors of time more than what it takes with pipeline.
 
-\item Addressing: To direct the code to the selected group of nodes, there should be some mechanism for that. Scope Selection[1][2] is one of the scheme that is done before transmitting the actual program to direct it towards the nodes. Addressing the nodes could also be done. This is an important issue of how to address the nodes and the intricacies behind it.
+\item \emph{Addressing}: To direct the code to the selected group of nodes, there should be some mechanism for that. Scope Selection[1][2] is one of the scheme that is done before transmitting the actual program to direct it towards the nodes. Addressing the nodes could also be done. This is an important issue of how to address the nodes and the intricacies behind it.
 \end{itemize}
 
 \section{OS Requirements}
 
+As mentioned above, we want our system to be general enough but at the same time it should be very basic. From the perspective of an OS design, we don't need complex Operating System running at the sensor nodes. TinyOS developed by Berkeley and Intel is targeted towards the development of WSNs. It supports a lot of things which really are not needed in most of the Sensor Network applications i.e. the TinyOS is not really tiny. Some of the basic operations that the OS should sopport are given:
 
+\item \emph{Threads}: The OS at the nodes should be able to support threading to listen from many nodes and to send to other nodes. This would be the basic need that an OS for such a framework should support.
+
+\item \emph{Modular}: The OS should be built in a modular fashion to have a support for further extensions. Anything needed for improvement can be added/modified afterwards easily.
+
+\item \emph{File System}: There is no need of file system in the OS. It should be able to run a program on the input data and give the output(nothing more fancy than this).
+
+\item \emph{OSI Model Support}: Reliability is a concern in WSNs. The Transport layer should be as relaible as possible. Scheduling in the MAC layer should be modular so that it could be changed as per needs. TinyOS presently uses simple CSMA, there could be other possibilities also.
+
+These are few of the basics from where we can have an insight for a whole operating system. Other than these there are a lot of issues that need to be handled at OS level and this itself could be a great research problem.
 
 \section{Related Work}
 
