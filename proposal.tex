@@ -7,9 +7,9 @@
 \input{./title.tex}
 
 \begin{abstract}
-
-
+We propose the designing of a general framework for Wireless Sensor Network applications. The framework should be able to reprogram the sensor nodes with reliability, security and keeping in mind that the nodes are constraint over their resources. There have been many approaches towards reprogramming the sensor networks but most of them are not general enough to be able to deploy in a field. The OS used in these works is TinyOS which itself a big constraint to the generality of the work. For now, we plan to study the past works and the developments in the technology to handle a real-time practical system.
 \end{abstract}
+
 \section{Introduction}
 Wireless Sensor Networks have a wide range of applications in both the static(from area monitoring to agriculture-based) and dynamic(from military based applications to animal tracking) scenarios. The primary difference between a WSN and a normal wired network is the resource constraints and wireless networking in WSNs. The constraints here are in terms of Power consumption, Computational resources, Memory usage, etc. The sensor nodes in network are very short on their power resource and henceforth their lifetime decreases if they are always ``at work''(sending or receiving data/computing).\\
 Most of the information in sensor nets is not needed until something ill has happened, in the sense that most WSNs are event-driven. For example, in a plant health monitoring system, the data sensed by the sensor node(which is normal most of the time) is not needed till the level of plant health has gone below a threshold level(say the nutrient level or temperature etc.) which is a rare event. This problem can be handled by providing the nodes with some computation power and the nodes send their data only when required(say an anomaly has occurred).
