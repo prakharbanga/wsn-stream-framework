@@ -2,10 +2,6 @@ This is BibTeX, Version 0.99c (TeX Live 2009/Debian)
 The top-level auxiliary file: proposal.aux
 The style file: alpha.bst
 Database file #1: refs.bib
-Repeated entry---line 71 of file refs.bib
- : @inproceedings{Jeong04incrementalnetwork
- :                                         ,
-I'm skipping whatever remains of this entry
 Warning--empty journal in mote
 Warning--empty journal in citeulike:1990821
 Warning--empty year in citeulike:1990821
@@ -51,4 +47,4 @@ warning$ -- 4
 while$ -- 46
 width$ -- 15
 write$ -- 145
-(There was 1 error message)
+(There were 4 warnings)
