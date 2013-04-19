@@ -1,0 +1,50 @@
+This is BibTeX, Version 0.99c (TeX Live 2009/Debian)
+The top-level auxiliary file: report.aux
+The style file: unsrt.bst
+Database file #1: refs.bib
+Warning--empty journal in mote
+Warning--empty institution in Stathopoulos03aremote
+Warning--empty journal in citeulike:1990821
+Warning--empty year in citeulike:1990821
+You've used 20 entries,
+            1791 wiz_defined-function locations,
+            558 strings with 7532 characters,
+and the built_in function-call counts, 5188 in all, are:
+= -- 464
+> -- 224
+< -- 9
++ -- 83
+- -- 63
+* -- 296
+:= -- 767
+add.period$ -- 62
+call.type$ -- 20
+change.case$ -- 21
+chr.to.int$ -- 0
+cite$ -- 24
+duplicate$ -- 263
+empty$ -- 521
+format.name$ -- 63
+if$ -- 1213
+int.to.chr$ -- 0
+int.to.str$ -- 20
+missing$ -- 17
+newline$ -- 100
+num.names$ -- 20
+pop$ -- 98
+preamble$ -- 1
+purify$ -- 0
+quote$ -- 0
+skip$ -- 148
+stack$ -- 0
+substring$ -- 298
+swap$ -- 94
+text.length$ -- 9
+text.prefix$ -- 0
+top$ -- 0
+type$ -- 0
+warning$ -- 4
+while$ -- 53
+width$ -- 22
+write$ -- 211
+(There were 4 warnings)

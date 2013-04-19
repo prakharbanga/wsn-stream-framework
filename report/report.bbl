@@ -1,0 +1,120 @@
+\begin{thebibliography}{10}
+
+\bibitem{mainwaring2002wireless}
+Alan Mainwaring, David Culler, Joseph Polastre, Robert Szewczyk, and John
+  Anderson.
+\newblock Wireless sensor networks for habitat monitoring.
+\newblock In {\em Proceedings of the 1st ACM international workshop on Wireless
+  sensor networks and applications}, pages 88--97. ACM, 2002.
+
+\bibitem{baggio2005wireless}
+Aline Baggio.
+\newblock Wireless sensor networks in precision agriculture.
+\newblock In {\em ACM Workshop on Real-World Wireless Sensor Networks (REALWSN
+  2005), Stockholm, Sweden}, 2005.
+
+\bibitem{sikka2004wireless}
+Pavan Sikka, Peter Corke, and Leslie Overs.
+\newblock Wireless sensor devices for animal tracking and control.
+\newblock In {\em Local Computer Networks, 2004. 29th Annual IEEE International
+  Conference on}, pages 446--454. IEEE, 2004.
+
+\bibitem{culler2004guest}
+David Culler, Deborah Estrin, and Mani Srivastava.
+\newblock Guest editors' introduction: overview of sensor networks.
+\newblock {\em Computer}, pages 41--49, 2004.
+
+\bibitem{chen2009design}
+Han Chen, Paul Chou, Sastry Duri, Hui Lei, and Johnathan Reason.
+\newblock The design and implementation of a smart building control system.
+\newblock In {\em e-Business Engineering, 2009. ICEBE'09. IEEE International
+  Conference on}, pages 255--262. IEEE, 2009.
+
+\bibitem{kim2006wireless}
+Sukun Kim, Shamim Pakzad, David Culler, James Demmel, Gregory Fenves, Steve
+  Glaser, and Martin Turon.
+\newblock Wireless sensor networks for structural health monitoring.
+\newblock In {\em Proceedings of the 4th international conference on Embedded
+  networked sensor systems}, pages 427--428. ACM, 2006.
+
+\bibitem{akyildiz2007wireless}
+Ian~Fuat Akyildiz, Tommaso Melodia, and Kaushik~R Chowdury.
+\newblock Wireless multimedia sensor networks: A survey.
+\newblock {\em Wireless Communications, IEEE}, 14(6):32--39, 2007.
+
+\bibitem{patwari2005locating}
+Neal Patwari, Joshua~N Ash, Spyros Kyperountas, Alfred~O Hero~III, Randolph~L
+  Moses, and Neiyer~S Correal.
+\newblock Locating the nodes: cooperative localization in wireless sensor
+  networks.
+\newblock {\em Signal Processing Magazine, IEEE}, 22(4):54--69, 2005.
+
+\bibitem{Wang06reprogrammingwireless}
+Qiang Wang, Yaoyao Zhu, and Liang Cheng.
+\newblock Reprogramming wireless sensor networks: Challenges and approaches.
+\newblock {\em IEEE Network}, 2006.
+
+\bibitem{Jeong04incrementalnetwork}
+Jaein Jeong.
+\newblock Incremental network programming for wireless sensors.
+\newblock In {\em In Proceedings of the First IEEE Communications Society
+  Conference on Sensor and Ad Hoc Communications and Networks IEEE SECON},
+  pages 25--33, 2004.
+
+\bibitem{mote}
+Inc. Crossbow~Technology.
+\newblock Mote in-network programming user reference.
+\newblock 2003.
+
+\bibitem{Stathopoulos03aremote}
+Thanos Stathopoulos, John Heidemann, and Deborah Estrin.
+\newblock A remote code update mechanism for wireless sensor networks.
+\newblock Technical report, 2003.
+
+\bibitem{Hui04thedynamic}
+Jonathan~W. Hui and David Culler.
+\newblock The dynamic behavior of a data dissemination protocol for network
+  programming at scale.
+\newblock In {\em In Proceedings of the 2nd international}, pages 81--94. ACM
+  Press, 2004.
+
+\bibitem{Kulkarni05mnp:multihop}
+Sandeep~S. Kulkarni and Limin Wang.
+\newblock Mnp: Multihop network reprogramming service for sensor networks.
+\newblock In {\em In Proceedings of the 25th International Conference on
+  Distributed Computing Systems (ICDCS}, pages 7--16, 2005.
+
+\bibitem{citeulike:1990821}
+Lane~A. Phillips.
+\newblock {Aqueduct:Robust} and efficient code propagation in heterogeneous
+  wireless sensor networks.
+
+\bibitem{Reijers03efficientcode}
+Niels~Reijers Reijers.
+\newblock Efficient code distribution in wireless sensor networks, 2003.
+
+\bibitem{Levis04trickle:a}
+Philip Levis, Neil Patel, David Culler, and Scott Shenker.
+\newblock Trickle: A self-regulating algorithm for code propagation and
+  maintenance in wireless sensor networks.
+\newblock In {\em In Proceedings of the First USENIX/ACM Symposium on Networked
+  Systems Design and Implementation (NSDI}, pages 15--28, 2004.
+
+\bibitem{Marrón05managementand}
+Pedro~José Marrón, Andreas Lachenmann, Daniel Minder, Matthias Gauger, Olga
+  Saukh, and Kurt Rothermel.
+\newblock Management and configuration issues for sensor networks.
+\newblock {\em International Journal of Network Management}, 15:235--253, 2005.
+
+\bibitem{Levis04thefirecracker}
+Philip Levis and David Culler.
+\newblock The firecracker protocol, 2004.
+
+\bibitem{Naik05sprinkler:a}
+Vinayak Naik, Anish Arora, Hongwei Zhang, and Prasun Sinha.
+\newblock Sprinkler: A reliable and energy efficient data dissemination service
+  for wireless embedded devices.
+\newblock In {\em In Proceedings of the 26th IEEE Real-Time Systems Symposium
+  (RTSS}, 2005.
+
+\end{thebibliography}
